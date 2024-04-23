@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+Book.delete_all
+
+p 'Create Book'
+
+
+
+20.times do
+  book = Book.create(
+    name: Faker::Book.title,
+  )
+  puts "Create Book: #{book.name})"
+end
