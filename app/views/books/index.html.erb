@@ -1,14 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Books</h1>
-
 <div id="books">
-  <% @books.each do |book| %>
-    <%= render book %>
-    <p>
-      <%= link_to "Show this book", book %>
-    </p>
-  <% end %>
+  <%= turbo_stream_from :books %>
+
+  <div class="container">
+    <h1 class="text-center mb-5">Books</h1>
+    <%= turbo_frame_tag "paginate_page_#{@books.current_page}" do %>
+      <div class="row">
+        <%= render partial: 'book', collection: @books, as: :book %>
+      </div>
+      <% if @books.next_page %>
+        <%= turbo_frame_tag "paginate_page_#{@books.next_page}", src: books_path(page: @books.next_page), loading: 'lazy' do %>
+          Loading...
+          Ja pier fuck ....
+          This is work ....
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+
 </div>
 
 <%= link_to "New book", new_book_path %>

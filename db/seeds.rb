@@ -13,9 +13,9 @@ p 'Create Book'
 
 
 
-20.times do
+400.times do |i|
   book = Book.create(
-    name: Faker::Book.title,
+    name: "#{Faker::Book.title} #{i+1}",
   )
   puts "Create Book: #{book.name})"
 end
