@@ -3,8 +3,7 @@
 <div id="books">
   <%= turbo_stream_from :books %>
 
-  <div class="container">
-    <h1 class="text-center mb-5">Books</h1>
+  <div id="infinity_scroll">
     <%= turbo_frame_tag "paginate_page_#{@books.current_page}" do %>
       <div class="row">
         <%= render partial: 'book', collection: @books, as: :book %>
@@ -20,6 +19,7 @@
   </div>
 
 
-</div>
+
 
 <%= link_to "New book", new_book_path %>
+</div>
